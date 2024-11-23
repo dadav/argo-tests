@@ -1,0 +1,7 @@
+---
+releases:
+  - name: helloworld-release
+    chart: ../charts/helloworld
+    wait: true
+    namespace: foo
+    createNamespace: true
