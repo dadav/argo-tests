@@ -3,15 +3,13 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: countdown
+  generateName: countdown-
   namespace: foo
   annotations:
     argocd.argoproj.io/hook: PreSync
     argocd.argoproj.io/hook-delete-policy: HookSucceeded
 spec:
   template:
-    metadata:
-      generateName: countdown-
     spec:
       containers:
       - image: alpine
