@@ -1,0 +1,7 @@
+---
+# Source: helloworld/templates/ns.yaml
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: foo
+spec: {}
