@@ -6,6 +6,8 @@ metadata:
     app: helloworld
   name: helloworld
   namespace: {{.Release.Namespace}}
+  annotations:
+    argocd.argoproj.io/sync-wave: "1"
 spec:
   replicas: {{ .Values.replicaCount }}
   selector:
