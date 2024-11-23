@@ -1,0 +1,29 @@
+---
+# Source: helloworld/templates/countdown.yaml
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: countdown
+  namespace: foo
+  annotations:
+    argocd.argoproj.io/hook: PreSync
+    argocd.argoproj.io/hook-delete-policy: HookSucceeded
+spec:
+  template:
+    metadata:
+      generateName: countdown-
+    spec:
+      containers:
+      - image: alpine
+        name: countdown
+        command: ["sh", "-c"]
+        args:
+          - |
+            count=60
+            while [ $count -gt 0 ]; do
+              echo "$count"
+              count=$((count - 1))
+            done
+            echo finished
+            exit 0
+      restartPolicy: Never
